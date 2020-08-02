@@ -1,0 +1,29 @@
+1. Intruduction - 30 Min
+2. Benifits of Microservice - 30 min
+3. Restful Services with Spring Boot - 2 Hrs
+4. Microservice with Spring Cloud - 17 Hrs
+	- Intruduction of Microservice
+	- Challange with Microservice
+	- Intruduction of Spring Cloud
+	- Advantages of Microservice
+	- Microservice Components
+	- Registry
+	- Intruduction Spring Cloud Config Server
+	- Setting up First Microservice
+	- Setup Spring Cloud Config Server
+	- Configure Spring Cloud Config Server with Git
+	- Spring Feign Restful Client for Service invocation
+	- Client Side Load Balance with Ribbon
+	- Need of Naming Server
+	- Setup Eureka Naming Server
+	- Connect Services to Naming Server
+	- Set up Zuul Api Gateway
+	- Execute Request with Zuul API Gateway
+	- Need of Spring Cloud Bus
+	- Fault Tolerance with Hystrix 
+	- Docker
+	- will Cover small Project while learning.
+
+ Total - 20 Hrs 
+
+ 20 * 300 = 6000/- Rs

@@ -1,0 +1,205 @@
+Microservices architecture allows avoiding monolith application for the large system. 
+It provides loose coupling between collaborating processes which running independently in 
+different environments with tight cohesion. 
+SOA -- SAOP -- 
+	-- you create some service -- don't know who is going to use
+	-- Tight Contract
+	-- Utility
+	-- Ip Locator Service -- SOA
+
+Micro Service -- you have complete idea	-- one problem statement
+
+online shop with separate microservices 
+for user-accounts, product-catalog order-processing and shopping carts. 
+
+Without Microservices
+
+Client --> WEB --- Mobile ---Server (Shopping Application With Module like Store,Catalog,Cart) -- Database
+
+
+With Microservices
+
+Client --> WEB --- Mobile --- Server 
+								|
+									Api Gateway
+									|			          | 				  |
+								Store(M1) -SB1			Catalog(m2)		   Cart(m3)	
+								    |                     |                   |
+									DB1					 DB2			     DB3		
+									
+									
+Loose Coupling– Effect of changes isolated
+Tight Cohesion– Code perform a single well-defined task
+
+Loose Coupling– Application build from collaboration services or processes,
+ so any process change without affecting another process.
+Tight Cohesion-An individual service or process that deals with a single view of data.
+
+
+Benifits
+
+The smaller code base is easy to maintain.
+Easy to scale as an individual component.
+Technology diversity i.e. we can mix libraries, databases, frameworks etc.
+Fault isolation i.e. a process failure should not bring the whole system down.
+Better support for smaller and parallel team.
+Independent deployment
+Deployment time reduce
+Easy to Test
+Quicker Product Release
+
+Chalanges
+
+Difficult to achieve strong consistency across services.
+ACID transactions do not span multiple processes.
+Distributed System so hard to debug and trace the issues
+Greater need for an end to end testing
+Required cultural changes in across teams like Dev and Ops working together even in the same team.
+
+
+creating Microservices
+
+Setup new service by using Spring Boot
+Expose resources via a RestController
+Consume remote services using RestTemplate
+
+
+What is Spring Cloud?
+
+
+It is building blocks for Cloud and Microservices
+It provides microservices infrastructure like provide use services such as Service Discovery, a Configuration server and Monitoring.
+It provides several other open source projects like Netflix OSS.
+It provides PaaS like Cloud Foundry, AWS and Heroku.
+It uses Spring Boot style starters
+
+
+
+ 
+PreviousNext
+In this Microservices Architecture Spring Boot tutorial, we will discuss to creating a microservices with spring and will see microservices architecture. Microservices allow large systems to be built up from a number of collaborating components. Microservices allows doing loose coupling between application processes instead of loose coupling between application components as Spring does.
+
+
+ 
+Spring 5 Design Pattern Book
+You could purchase my Spring 5 book that is with title name “Spring 5 Design Pattern“. This book is available on the Amazon and Packt publisher website. Learn various design patterns and best practices in Spring 5 and use them to solve common design problems. You could use author discount to purchase this book by using code- “AUTHDIS40“.
+Spring-5-Design-Pattern
+
+Microservices Architecture Spring Boot Table of Contents
+Introduction
+What is Microservices Architecture?
+Without Microservices
+With Microservices
+Microservices Benefits
+Microservices Challenges
+Microservices Infrastructure
+Microservices Tooling Supports
+Spring
+Spring Boot
+Spring Cloud
+Eureka by Netflix
+Developing Simple Microservices Example
+Creating Discovery Service
+Creating MicroService (the Producer)
+Create Microservice Consumers
+Summary
+1. Introduction
+Microservices is not a new term. It coined in 2005 by Dr Peter Rodgers then called micro web services based on SOAP. It became more popular since 2010. Microservices allows us to break our large system into the number of independent collaborating processes. Let us see below microservices architecture.
+
+1.1 What is Microservices Architecture?
+Microservices architecture allows avoiding monolith application for the large system. It provides loose coupling between collaborating processes which running independently in different environments with tight cohesion. So let’s discuss it by an example as below.
+
+For example imagine an online shop with separate microservices for user-accounts, product-catalog order-processing and shopping carts. So these components are inevitably important for such a large online shopping portal. For online shopping system, we could use following architectures.
+
+1.2 Shopping system without Microservices (Monolith architecture)
+In this architecture we are using Monolith architecture i.e. all collaborating components combine all in one application.
+
+monolith application architecture
+1.3 Shopping system with Microservices
+In this architecture style, the main application divided into a set of sub-applications called microservices. One large Application divided into multiple collaborating processes as below.
+
+Microservices Architecture
+Spring enables separation-of-concerns
+Loose Coupling– Effect of changes isolated
+Tight Cohesion– Code perform a single well-defined task
+Microservices provide the same strength as Spring provide
+Loose Coupling– Application build from collaboration services or processes, so any process change without affecting another process.
+Tight Cohesion-An individual service or process that deals with a single view of data.
+spring certification
+There are a number of moving parts that you have to set up and configure to build such a system. For implementing this system is not too obvious you have to know about spring boot, spring cloud and Netflix. In this post, I will discuss one example for this architecture before the example lets first discuss pros and cons of microservices architecture.
+Popular Tutorials
+
+Spring Tutorial
+Spring MVC Web Tutorial
+Spring Boot Tutorial
+Spring Security Tutorial
+Spring AOP Tutorial
+Spring JDBC Tutorial
+Spring HATEOAS
+Microservices with Spring Boot
+REST Webservice
+Core Java
+Hibernate Tutorial
+Spring Batch
+2. Microservices Benefits
+The smaller code base is easy to maintain.
+Easy to scale as an individual component.
+Technology diversity i.e. we can mix libraries, databases, frameworks etc.
+Fault isolation i.e. a process failure should not bring the whole system down.
+Better support for smaller and parallel team.
+Independent deployment
+Deployment time reduce
+3. Microservices Challenges
+Difficult to achieve strong consistency across services
+ACID transactions do not span multiple processes.
+Distributed System so hard to debug and trace the issues
+Greater need for an end to end testing
+Required cultural changes in across teams like Dev and Ops working together even in the same team.
+4. Microservices Infrastructure
+Platform as a Service like Pivotal Cloud Foundry help to deployment, easily run, scale, monitor etc.
+It supports for continuous deployment, rolling upgrades fo new versions of code, running multiple versions of the same service at same time.
+5. Microservices Tooling Supports
+5.1 Using Spring for creating Microservices
+Setup new service by using Spring Boot
+Expose resources via a RestController
+Consume remote services using RestTemplate
+5.2 Adding Spring Cloud and Discovery server
+What is Spring Cloud?
+It is building blocks for Cloud and Microservices
+It provides microservices infrastructure like provide use services such as Service Discovery, a Configuration server and Monitoring.
+It provides several other open source projects like Netflix OSS.
+It provides PaaS like Cloud Foundry, AWS and Heroku.
+It uses Spring Boot style starters
+There are many use-cases supported by Spring Cloud like Cloud Integration, Dynamic Reconfiguration, Service Discovery, Security, Client-side Load Balancing etc. But in this post we concentrate on following microservices support
+
+Service Discovery (How do services find each other?)
+
+Client-side Load Balancing (How do we decide which service instance to use?)
+
+Service Discovery
+
+
+
+
+
+
+# Service registers under this name
+spring:
+  application:
+    name: accounts-microservice
+
+# Discovery Server Access
+eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8181/eureka/
+
+# HTTP Server (Tomcat) Port
+server: 
+  port: 2222
+  
+  
+  @EnableEurekaServer
+  
+
+		
