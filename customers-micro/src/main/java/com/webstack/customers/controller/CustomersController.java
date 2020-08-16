@@ -3,6 +3,7 @@ package com.webstack.customers.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +14,12 @@ import com.webstack.customers.dto.CustomerDTO;
 @RequestMapping("/api")
 public class CustomersController {
 
+	@Value("${customer.name}")
+	private String customerName;
 	
 	@GetMapping("/sayHello")
 	public String sayHello() {
-		return "Hello Radhe Krishna...!";
+		return "Hello Radhe Krishna...!"+customerName;
 	}
 	
 	@GetMapping("/customerList")
