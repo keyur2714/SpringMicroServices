@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.webstack.billingsys.dto.BillingDTO;
 import com.webstack.billingsys.dto.CustomerDTO;
 import com.webstack.billingsys.dto.ItemsDTO;
@@ -30,7 +31,8 @@ public class BillingController {
 		return "Hello Radhe Krishna...!";
 	}
 	
-	@GetMapping("/bill/{name}")
+	@GetMapping("/bill/{name}")	
+	@HystrixCommand(fallbackMethod="generateBillFallBack")
 	public BillingDTO generateBill(@PathVariable String name) {
 		BillingDTO billingDTO = new BillingDTO();
 		
@@ -53,6 +55,31 @@ public class BillingController {
 		billingDTO.setItems(items);
 		
 		return billingDTO;
+		
+	}
+	
+	public BillingDTO generateBillFallBack(@PathVariable String name) {
+		BillingDTO billingDTO = new BillingDTO();
+		
+		billingDTO.setBillNo(11111l);
+		billingDTO.setBillDate(new Date(System.currentTimeMillis()));
+		
+		CustomerDTO customer=new CustomerDTO();
+		customer.setName("No Customer");		
+		billingDTO.setCustomer(customer);
+		
+		ItemsDTO item1 = new ItemsDTO(1l,"Tea",10.0,2);
+		ItemsDTO item2 = new ItemsDTO(2l,"Coffee",20.0,1);
+		ItemsDTO item3 = new ItemsDTO(3l,"Cream Roll",10.0,2);
+		
+		List<ItemsDTO> items = new ArrayList<>();
+		items.add(item1);
+		items.add(item2);
+		items.add(item3);
+		
+		billingDTO.setItems(items);
+		
+		return billingDTO;		
 		
 	}
 	
