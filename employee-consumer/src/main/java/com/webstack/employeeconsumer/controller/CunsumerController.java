@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.webstack.employeeconsumer.dto.EmployeeDTO;
+import com.webstack.employeeconsumer.service.EmployeeRemoteCallService;
 
 @RestController
 @RequestMapping("/api")
 public class CunsumerController {
 
 	@Autowired
-	LoadBalancerClient client;
+	private LoadBalancerClient client;
+
+	@Autowired
+	private EmployeeRemoteCallService remoteClient;
 
 	@GetMapping("/empList")
 	public List<EmployeeDTO> getEmployees() {
@@ -30,7 +34,7 @@ public class CunsumerController {
 		String baseUrl = serviceInstance.getUri().toString();
 
 		baseUrl = baseUrl + "/api/employees";
-		
+
 		System.out.println(baseUrl);
 
 		RestTemplate restTemplate = new RestTemplate();
@@ -47,4 +51,14 @@ public class CunsumerController {
 
 	}
 
+	@GetMapping("/feignEmpList")
+	public List<EmployeeDTO> getEmployeeList() {
+
+		List<EmployeeDTO> employees = remoteClient.getEmployeeList();
+
+		System.out.println(employees);
+
+		return employees;
+
+	}
 }
